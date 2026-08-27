@@ -120,7 +120,7 @@ function RegistrationTable() {
         </div>
 
         {/* ================= TABLE CARD ================= */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
+        <div className="bg-slate-900 border border-slate-800 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl">
 
           {registrations.length === 0 ? (
 
