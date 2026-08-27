@@ -59,20 +59,20 @@ function RegistrationForm() {
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-3 sm:p-5 md:p-8">
 
       {/* Main Container */}
-      <div className="w-full max-w-6xl min-h-0 md:min-h-[650px] bg-slate-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col md:flex-row">
+      <div className="w-full max-w-6xl bg-slate-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col md:flex-row">
 
         {/* ================= LEFT SIDE ================= */}
-        <div className="relative md:w-[45%] bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 p-6 sm:p-8 md:p-12 flex flex-col justify-between overflow-hidden">
+        <div className="relative md:w-[45%] bg-gradient-to-br from-slate-800 via-blue-950 to-slate-900 p-6 sm:p-8 md:p-12 flex flex-col justify-between overflow-hidden">
 
           {/* Background Decorations */}
-          <div className="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-white/10 rounded-full -top-24 sm:-top-28 md:-top-32 -right-24 sm:-right-28 md:-right-32" />
+          <div className="absolute w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-blue-400/5 rounded-full -top-24 sm:-top-28 md:-top-32 -right-24 sm:-right-28 md:-right-32" />
 
-          <div className="absolute w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 bg-purple-400/10 rounded-full -bottom-20 sm:-bottom-24 -left-20 sm:-left-24" />
+          <div className="absolute w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 bg-indigo-400/5 rounded-full -bottom-20 sm:-bottom-24 -left-20 sm:-left-24" />
 
           {/* Main Text */}
           <div className="relative z-10 mt-2 sm:mt-4 md:mt-8">
 
-            <p className="text-indigo-100 text-xs sm:text-sm font-semibold tracking-widest mb-3 sm:mb-4">
+            <p className="text-blue-300 text-xs sm:text-sm font-semibold tracking-widest mb-3 sm:mb-4">
               WELCOME
             </p>
 
@@ -82,7 +82,7 @@ function RegistrationForm() {
               registration.
             </h1>
 
-            <p className="text-indigo-100 text-sm sm:text-base mt-4 sm:mt-6 max-w-sm leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base mt-4 sm:mt-6 max-w-sm leading-relaxed">
               Join our community by completing the registration form.
               Your details are securely saved for easy access.
             </p>
@@ -93,22 +93,22 @@ function RegistrationForm() {
           <div className="relative z-10 mt-8 sm:mt-10 md:mt-12">
 
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <div className="w-2 h-2 rounded-full bg-white shrink-0" />
+              <div className="w-2 h-2 rounded-full bg-blue-400 shrink-0" />
 
-              <span className="text-white text-xs sm:text-sm">
+              <span className="text-slate-200 text-xs sm:text-sm">
                 Quick & simple registration
               </span>
             </div>
 
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
-              <div className="w-2 h-2 rounded-full bg-white shrink-0" />
+              <div className="w-2 h-2 rounded-full bg-blue-400 shrink-0" />
 
-              <span className="text-white text-xs sm:text-sm">
+              <span className="text-slate-200 text-xs sm:text-sm">
                 Your details are saved securely
               </span>
             </div>
 
-            <p className="text-indigo-200 text-xs mt-6 sm:mt-8">
+            <p className="text-slate-500 text-xs mt-6 sm:mt-8">
               © 2026 Registration Portal
             </p>
 
@@ -121,7 +121,7 @@ function RegistrationForm() {
           <div className="w-full max-w-lg mx-auto">
 
             {/* Form Header */}
-            <div className="mb-6 sm:mb-8">
+            <div className="mb-6">
 
               <h2 className="text-2xl sm:text-3xl font-bold text-white">
                 Registration Form
@@ -136,21 +136,21 @@ function RegistrationForm() {
             {/* Form */}
             <form
               onSubmit={handleSubmit}
-              className="space-y-4 sm:space-y-5"
+              className="space-y-3 sm:space-y-4"
             >
 
               {/* Full Name */}
               <div>
 
-                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1.5">
                   Full Name
                 </label>
 
                 <div className="relative">
 
                   <User
-                    size={18}
-                    className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-slate-500"
+                    size={17}
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"
                   />
 
                   <input
@@ -160,7 +160,7 @@ function RegistrationForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py- sm:py-3.5 pl-10 sm:pl-11 pr-4 text-sm sm:text-base outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition"
+                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition"
                   />
 
                 </div>
@@ -169,15 +169,15 @@ function RegistrationForm() {
               {/* Email */}
               <div>
 
-                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1.5">
                   Email Address
                 </label>
 
                 <div className="relative">
 
                   <Mail
-                    size={18}
-                    className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-slate-500"
+                    size={17}
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"
                   />
 
                   <input
@@ -187,7 +187,7 @@ function RegistrationForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2.5 sm:py-3 pl-10 sm:pl-11 pr-4 text-sm sm:text-base outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 transition"
+                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 transition"
                   />
 
                 </div>
@@ -196,15 +196,15 @@ function RegistrationForm() {
               {/* Phone */}
               <div>
 
-                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1.5">
                   Phone Number
                 </label>
 
                 <div className="relative">
 
                   <Phone
-                    size={18}
-                    className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-slate-500"
+                    size={17}
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"
                   />
 
                   <input
@@ -214,7 +214,7 @@ function RegistrationForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2.5 sm:py-3 pl-10 sm:pl-11 pr-4 text-sm sm:text-base outline-none focus:border-pink-500 focus:ring-4 focus:ring-pink-500/10 transition"
+                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-pink-500 focus:ring-4 focus:ring-pink-500/10 transition"
                   />
 
                 </div>
@@ -223,15 +223,15 @@ function RegistrationForm() {
               {/* Course */}
               <div>
 
-                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1.5">
                   Course
                 </label>
 
                 <div className="relative">
 
                   <BookOpen
-                    size={18}
-                    className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
+                    size={17}
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"
                   />
 
                   <select
@@ -239,7 +239,7 @@ function RegistrationForm() {
                     value={formData.course}
                     onChange={handleChange}
                     required
-                    className="w-full appearance-none bg-slate-900 border border-slate-800 text-white rounded-xl py-2.5 sm:py-3 pl-10 sm:pl-11 pr-4 text-sm sm:text-base outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition"
+                    className="w-full appearance-none bg-slate-900 border border-slate-800 text-white rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition"
                   >
 
                     <option value="">
@@ -270,9 +270,9 @@ function RegistrationForm() {
               {/* Register Button */}
               <button
                 type="submit"
-                className="w-full mt-2 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold py-2.5 sm:py-3 rounded-xl flex items-center justify-center gap-2 text-sm sm:text-base shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0 transition duration-200"
+                className="w-full mt-2 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0 transition duration-200"
               >
-                <UserPlus size={18} />
+                <UserPlus size={17} />
                 Register Now
               </button>
 
@@ -315,7 +315,7 @@ function RegistrationForm() {
             {/* View Registrations */}
             <button
               onClick={() => navigate("/registrations")}
-              className="w-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold py-3 sm:py-3.5 rounded-xl text-sm sm:text-base shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
+              className="w-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold py-3 rounded-xl text-sm shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
             >
               View Registrations
             </button>
