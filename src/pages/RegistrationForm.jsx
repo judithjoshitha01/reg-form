@@ -28,7 +28,6 @@ function RegistrationForm() {
       [e.target.name]: e.target.value,
     });
   };
-
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -47,7 +46,7 @@ const handleSubmit = async (e) => {
       throw new Error(data.message || "Registration failed");
     }
 
-    console.log("Saved successfully:", data);
+    console.log("Saved to MongoDB:", data);
 
     setShowSuccess(true);
 
@@ -59,10 +58,11 @@ const handleSubmit = async (e) => {
     });
   } catch (error) {
     console.error("Registration error:", error);
-    alert("Registration failed: " + error.message);
+    alert("Registration failed. Check backend.");
   }
 };
-    
+
+      
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 md:p-8">
