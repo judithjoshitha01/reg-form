@@ -219,17 +219,17 @@ function RegistrationTable() {
 
                       </td>
 
-                      <td className="px-5 py-4 text-sm text-slate-400">
+                      <td className="px-5 py-4 text-sm text-white">
                         {item.email}
                       </td>
 
-                      <td className="px-5 py-4 text-sm text-slate-400">
+                      <td className="px-5 py-4 text-sm text-white">
                         {item.phone}
                       </td>
 
                       <td className="px-5 py-4">
 
-                        <span className="inline-flex px-3 py-1.5 rounded-lg bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-medium">
+                        <span className="inline-flex px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium">
                           {item.course}
                         </span>
 
@@ -396,7 +396,7 @@ function RegistrationTable() {
               {/* Save */}
               <button
                 onClick={handleSave}
-                className="w-full mt-2 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
+                className="w-full mt-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
               >
                 <Save size={17} />
                 Save Changes
