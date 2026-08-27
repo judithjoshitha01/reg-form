@@ -59,7 +59,7 @@ function RegistrationForm() {
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-3 sm:p-5 md:p-8">
 
       {/* Main Container */}
-      <div className="w-full max-w-6xl bg-slate-900 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col md:flex-row">
+      <div className="w-full max-w-6xl bg-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col md:flex-row">
 
         {/* ================= LEFT SIDE ================= */}
         <div className="relative md:w-[45%] bg-gradient-to-br from-slate-800 via-blue-950 to-slate-900 p-6 sm:p-8 md:p-12 flex flex-col justify-between overflow-hidden">
@@ -116,7 +116,7 @@ function RegistrationForm() {
         </div>
 
         {/* ================= RIGHT SIDE ================= */}
-        <div className="md:w-[55%] bg-slate-950 p-6 sm:p-8 md:p-12 flex items-center">
+        <div className="md:w-[55%] bg-slate-900 p-6 sm:p-8 md:p-12 flex items-center">
 
           <div className="w-full max-w-lg mx-auto">
 
@@ -160,7 +160,7 @@ function RegistrationForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition"
+                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition"
                   />
 
                 </div>
@@ -187,7 +187,7 @@ function RegistrationForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 transition"
+                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 transition"
                   />
 
                 </div>
@@ -214,7 +214,7 @@ function RegistrationForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-pink-500 focus:ring-4 focus:ring-pink-500/10 transition"
+                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-pink-500 focus:ring-4 focus:ring-pink-500/10 transition"
                   />
 
                 </div>
@@ -239,7 +239,7 @@ function RegistrationForm() {
                     value={formData.course}
                     onChange={handleChange}
                     required
-                    className="w-full appearance-none bg-slate-900 border border-slate-800 text-white rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition"
+                    className="w-full appearance-none bg-slate-800 border border-slate-700 text-white rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition"
                   >
 
                     <option value="">
