@@ -144,7 +144,7 @@ function RegistrationTable() {
 
               <button
                 onClick={() => navigate("/register")}
-                className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold transition"
+                className="px-3 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-semibold transition"
               >
                 Add Registration
               </button>
