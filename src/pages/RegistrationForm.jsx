@@ -160,7 +160,7 @@ function RegistrationForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py-3 sm:py-3.5 pl-10 sm:pl-11 pr-4 text-sm sm:text-base outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition"
+                    className="w-full bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 rounded-xl py- sm:py-3.5 pl-10 sm:pl-11 pr-4 text-sm sm:text-base outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition"
                   />
 
                 </div>
