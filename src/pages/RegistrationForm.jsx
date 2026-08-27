@@ -315,7 +315,7 @@ function RegistrationForm() {
             {/* View Registrations */}
             <button
               onClick={() => navigate("/registrations")}
-              className="w-full bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold py-3 rounded-xl text-sm shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
+              className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 rounded-xl text-sm shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
             >
               View Registrations
             </button>
