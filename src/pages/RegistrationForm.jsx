@@ -28,22 +28,27 @@ function RegistrationForm() {
       [e.target.name]: e.target.value,
     });
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  try {
+    const response = await fetch("http://localhost:5000/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    const existingData =
-      JSON.parse(localStorage.getItem("registrations")) || [];
+    const data = await response.json();
 
-    const newRegistration = {
-      id: Date.now(),
-      ...formData,
-    };
+    if (!response.ok) {
+      throw new Error(data.message || "Registration failed");
+    }
 
-    localStorage.setItem(
-      "registrations",
-      JSON.stringify([...existingData, newRegistration])
-    );
+    console.log("Saved to MongoDB:", data);
+
+    setShowSuccess(true);
 
     setFormData({
       name: "",
@@ -51,9 +56,13 @@ function RegistrationForm() {
       phone: "",
       course: "",
     });
+  } catch (error) {
+    console.error("Registration error:", error);
+    alert("Registration failed. Check backend.");
+  }
+};
 
-    setShowSuccess(true);
-  };
+      
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-3 sm:p-5 md:p-8">

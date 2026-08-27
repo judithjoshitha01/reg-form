@@ -16,33 +16,79 @@ function RegistrationTable() {
   const [registrations, setRegistrations] = useState([]);
   const [editingData, setEditingData] = useState(null);
 
+  // ================= FETCH USERS =================
   useEffect(() => {
-    const storedData =
-      JSON.parse(localStorage.getItem("registrations")) || [];
+    const fetchRegistrations = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/users"
+        );
 
-    setRegistrations(storedData);
+        if (!response.ok) {
+          throw new Error("Failed to fetch registrations");
+        }
+
+        const data = await response.json();
+
+        setRegistrations(data);
+      } catch (error) {
+        console.error(
+          "Error fetching registrations:",
+          error
+        );
+      }
+    };
+
+    fetchRegistrations();
   }, []);
 
-  // Delete
-  const handleDelete = (id) => {
-    const updatedData = registrations.filter(
-      (item) => item.id !== id
+  // ================= DELETE =================
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this registration?"
     );
 
-    setRegistrations(updatedData);
+    if (!confirmDelete) {
+      return;
+    }
 
-    localStorage.setItem(
-      "registrations",
-      JSON.stringify(updatedData)
-    );
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/users/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Failed to delete user"
+        );
+      }
+
+      // Remove deleted user from UI
+      setRegistrations((prev) =>
+        prev.filter((item) => item._id !== id)
+      );
+
+      alert("Registration deleted successfully!");
+
+    } catch (error) {
+      console.error("Delete error:", error);
+      alert("Delete failed. Check backend.");
+    }
   };
 
-  // Edit
+  // ================= EDIT =================
   const handleEdit = (item) => {
-    setEditingData({ ...item });
+    setEditingData({
+      ...item,
+    });
   };
 
-  // Edit input change
+  // ================= EDIT INPUT CHANGE =================
   const handleEditChange = (e) => {
     setEditingData({
       ...editingData,
@@ -50,22 +96,54 @@ function RegistrationTable() {
     });
   };
 
-  // Save edit
-  const handleSave = () => {
-    const updatedData = registrations.map((item) =>
-      item.id === editingData.id
-        ? editingData
-        : item
-    );
+  // ================= UPDATE =================
+  const handleSave = async () => {
+    if (!editingData) {
+      return;
+    }
 
-    setRegistrations(updatedData);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/users/${editingData._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: editingData.name,
+            email: editingData.email,
+            phone: editingData.phone,
+            course: editingData.course,
+          }),
+        }
+      );
 
-    localStorage.setItem(
-      "registrations",
-      JSON.stringify(updatedData)
-    );
+      const data = await response.json();
 
-    setEditingData(null);
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Failed to update user"
+        );
+      }
+
+      // Update UI with updated MongoDB data
+      setRegistrations((prev) =>
+        prev.map((item) =>
+          item._id === editingData._id
+            ? data.user
+            : item
+        )
+      );
+
+      setEditingData(null);
+
+      alert("Registration updated successfully!");
+
+    } catch (error) {
+      console.error("Update error:", error);
+      alert("Update failed. Check backend.");
+    }
   };
 
   return (
@@ -108,6 +186,7 @@ function RegistrationTable() {
         <div className="mb-5">
 
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800">
+
             <span className="text-slate-400 text-sm">
               Total Registrations
             </span>
@@ -115,6 +194,7 @@ function RegistrationTable() {
             <span className="text-indigo-400 font-bold">
               {registrations.length}
             </span>
+
           </div>
 
         </div>
@@ -124,14 +204,16 @@ function RegistrationTable() {
 
           {registrations.length === 0 ? (
 
-            /* Empty State */
+            /* ================= EMPTY STATE ================= */
             <div className="px-6 py-16 text-center">
 
               <div className="w-16 h-16 mx-auto mb-5 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+
                 <Users
                   size={28}
                   className="text-indigo-400"
                 />
+
               </div>
 
               <h2 className="text-xl font-semibold text-white">
@@ -153,12 +235,14 @@ function RegistrationTable() {
 
           ) : (
 
-            /* Responsive Table */
+            /* ================= RESPONSIVE TABLE ================= */
             <div className="overflow-x-auto">
 
               <table className="w-full min-w-[750px]">
 
+                {/* ================= TABLE HEADER ================= */}
                 <thead>
+
                   <tr className="border-b border-slate-800 bg-slate-900">
 
                     <th className="text-left px-5 py-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">
@@ -186,29 +270,35 @@ function RegistrationTable() {
                     </th>
 
                   </tr>
+
                 </thead>
 
+                {/* ================= TABLE BODY ================= */}
                 <tbody>
 
                   {registrations.map((item, index) => (
 
                     <tr
-                      key={item.id}
+                      key={item._id}
                       className="border-b border-slate-800/70 hover:bg-slate-800/40 transition"
                     >
 
+                      {/* Number */}
                       <td className="px-5 py-4 text-sm text-slate-500">
                         {index + 1}
                       </td>
 
+                      {/* Name */}
                       <td className="px-5 py-4">
 
                         <div className="flex items-center gap-3">
 
                           <div className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-semibold">
+
                             {item.name
                               ?.charAt(0)
                               ?.toUpperCase()}
+
                           </div>
 
                           <span className="text-sm font-medium text-white">
@@ -219,14 +309,17 @@ function RegistrationTable() {
 
                       </td>
 
+                      {/* Email */}
                       <td className="px-5 py-4 text-sm text-white">
                         {item.email}
                       </td>
 
+                      {/* Phone */}
                       <td className="px-5 py-4 text-sm text-white">
                         {item.phone}
                       </td>
 
+                      {/* Course */}
                       <td className="px-5 py-4">
 
                         <span className="inline-flex px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium">
@@ -235,11 +328,12 @@ function RegistrationTable() {
 
                       </td>
 
+                      {/* Actions */}
                       <td className="px-5 py-4">
 
                         <div className="flex items-center justify-center gap-2">
 
-                          {/* Edit */}
+                          {/* ================= EDIT BUTTON ================= */}
                           <button
                             onClick={() =>
                               handleEdit(item)
@@ -247,18 +341,22 @@ function RegistrationTable() {
                             className="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-white flex items-center justify-center transition"
                             title="Edit"
                           >
+
                             <Edit3 size={16} />
+
                           </button>
 
-                          {/* Delete */}
+                          {/* ================= DELETE BUTTON ================= */}
                           <button
                             onClick={() =>
-                              handleDelete(item.id)
+                              handleDelete(item._id)
                             }
                             className="w-9 h-9 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white flex items-center justify-center transition"
                             title="Delete"
                           >
+
                             <Trash2 size={16} />
+
                           </button>
 
                         </div>
@@ -279,13 +377,16 @@ function RegistrationTable() {
 
         </div>
 
-        {/* Back */}
+        {/* ================= BACK BUTTON ================= */}
         <button
           onClick={() => navigate("/register")}
           className="mt-5 flex items-center gap-2 text-sm text-slate-400 hover:text-white transition"
         >
+
           <ArrowLeft size={16} />
+
           Back to Registration
+
         </button>
 
       </div>
@@ -301,6 +402,7 @@ function RegistrationTable() {
             <div className="flex items-center justify-between mb-6">
 
               <div>
+
                 <h2 className="text-xl font-bold text-white">
                   Edit Registration
                 </h2>
@@ -308,21 +410,27 @@ function RegistrationTable() {
                 <p className="text-slate-400 text-sm mt-1">
                   Update the registration details
                 </p>
+
               </div>
 
+              {/* Close */}
               <button
                 onClick={() => setEditingData(null)}
                 className="p-2 rounded-lg text-slate-500 hover:bg-slate-800 hover:text-white transition"
               >
+
                 <X size={19} />
+
               </button>
 
             </div>
 
-            {/* Edit Form */}
+            {/* ================= EDIT FORM ================= */}
             <div className="space-y-4">
 
+              {/* Name */}
               <div>
+
                 <label className="block text-sm text-slate-300 mb-2">
                   Full Name
                 </label>
@@ -330,13 +438,16 @@ function RegistrationTable() {
                 <input
                   type="text"
                   name="name"
-                  value={editingData.name}
+                  value={editingData.name || ""}
                   onChange={handleEditChange}
                   className="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3 outline-none focus:border-indigo-500 transition"
                 />
+
               </div>
 
+              {/* Email */}
               <div>
+
                 <label className="block text-sm text-slate-300 mb-2">
                   Email
                 </label>
@@ -344,13 +455,16 @@ function RegistrationTable() {
                 <input
                   type="email"
                   name="email"
-                  value={editingData.email}
+                  value={editingData.email || ""}
                   onChange={handleEditChange}
                   className="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3 outline-none focus:border-indigo-500 transition"
                 />
+
               </div>
 
+              {/* Phone */}
               <div>
+
                 <label className="block text-sm text-slate-300 mb-2">
                   Phone
                 </label>
@@ -358,23 +472,27 @@ function RegistrationTable() {
                 <input
                   type="tel"
                   name="phone"
-                  value={editingData.phone}
+                  value={editingData.phone || ""}
                   onChange={handleEditChange}
                   className="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3 outline-none focus:border-indigo-500 transition"
                 />
+
               </div>
 
+              {/* Course */}
               <div>
+
                 <label className="block text-sm text-slate-300 mb-2">
                   Course
                 </label>
 
                 <select
                   name="course"
-                  value={editingData.course}
+                  value={editingData.course || ""}
                   onChange={handleEditChange}
                   className="w-full bg-slate-950 border border-slate-800 text-white rounded-xl px-4 py-3 outline-none focus:border-indigo-500 transition"
                 >
+
                   <option value="Computer Science">
                     Computer Science
                   </option>
@@ -390,16 +508,21 @@ function RegistrationTable() {
                   <option value="Mechanical">
                     Mechanical
                   </option>
+
                 </select>
+
               </div>
 
-              {/* Save */}
+              {/* ================= SAVE BUTTON ================= */}
               <button
                 onClick={handleSave}
                 className="w-full mt-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
               >
+
                 <Save size={17} />
+
                 Save Changes
+
               </button>
 
             </div>
