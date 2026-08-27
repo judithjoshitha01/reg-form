@@ -78,7 +78,7 @@ function RegistrationTable() {
 
           <div className="flex items-center gap-3">
 
-            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
               <Users size={22} />
             </div>
 
@@ -96,7 +96,7 @@ function RegistrationTable() {
 
           <button
             onClick={() => navigate("/register")}
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 font-semibold flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
+            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 font-semibold flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
           >
             <UserPlus size={18} />
             New Registration
