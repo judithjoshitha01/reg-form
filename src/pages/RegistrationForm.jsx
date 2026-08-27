@@ -270,7 +270,7 @@ function RegistrationForm() {
               {/* Register Button */}
               <button
                 type="submit"
-                className="w-full mt-2 bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0 transition duration-200"
+                className="w-full mt-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0 transition duration-200"
               >
                 <UserPlus size={17} />
                 Register Now
