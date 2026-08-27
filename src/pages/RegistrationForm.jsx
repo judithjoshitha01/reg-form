@@ -160,7 +160,7 @@ function RegistrationForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition"
+                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_#1e293b] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   />
 
                 </div>
@@ -187,7 +187,7 @@ function RegistrationForm() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-500/10 transition"
+                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_#1e293b] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   />
 
                 </div>
@@ -214,7 +214,7 @@ function RegistrationForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-pink-500 focus:ring-4 focus:ring-pink-500/10 transition"
+                    className="w-full bg-slate-800 border border-slate-700 text-white placeholder:text-slate-600 rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_#1e293b] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   />
 
                 </div>
@@ -239,7 +239,7 @@ function RegistrationForm() {
                     value={formData.course}
                     onChange={handleChange}
                     required
-                    className="w-full appearance-none bg-slate-800 border border-slate-700 text-white rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition"
+                    className="w-full appearance-none bg-slate-800 border border-slate-700 text-white rounded-xl py-2 pl-10 pr-4 text-sm outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_#1e293b] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   >
 
                     <option value="">
