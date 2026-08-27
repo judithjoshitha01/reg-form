@@ -59,7 +59,7 @@ function RegistrationForm() {
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-3 sm:p-5 md:p-8">
 
       {/* Main Container */}
-      <div className="w-full max-w-6xl bg-slate-800 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col md:flex-row">
+      <div className="w-full max-w-6xl bg-slate-800 rounded-xl sm:rounded-2xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col md:flex-row">
 
         {/* ================= LEFT SIDE ================= */}
         <div className="relative md:w-[45%] bg-gradient-to-br from-slate-800 via-blue-950 to-slate-900 p-6 sm:p-8 md:p-12 flex flex-col justify-between overflow-hidden">
