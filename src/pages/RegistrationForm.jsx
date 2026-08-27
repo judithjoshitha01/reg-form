@@ -29,21 +29,27 @@ function RegistrationForm() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const existingData =
-      JSON.parse(localStorage.getItem("registrations")) || [];
+  try {
+    const response = await fetch("http://localhost:5000/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    const newRegistration = {
-      id: Date.now(),
-      ...formData,
-    };
+    const data = await response.json();
 
-    localStorage.setItem(
-      "registrations",
-      JSON.stringify([...existingData, newRegistration])
-    );
+    if (!response.ok) {
+      throw new Error(data.message || "Registration failed");
+    }
+
+    console.log("Saved successfully:", data);
+
+    setShowSuccess(true);
 
     setFormData({
       name: "",
@@ -51,9 +57,12 @@ function RegistrationForm() {
       phone: "",
       course: "",
     });
-
-    setShowSuccess(true);
-  };
+  } catch (error) {
+    console.error("Registration error:", error);
+    alert("Registration failed: " + error.message);
+  }
+};
+    
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 md:p-8">

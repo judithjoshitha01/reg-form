@@ -8,26 +8,46 @@ function RegistrationTable() {
   const [registrations, setRegistrations] = useState([]);
   const [editingData, setEditingData] = useState(null);
 
-  useEffect(() => {
-    const storedData =
-      JSON.parse(localStorage.getItem("registrations")) || [];
+useEffect(() => {
+  const fetchRegistrations = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/users");
 
-    setRegistrations(storedData);
-  }, []);
+      if (!response.ok) {
+        throw new Error("Failed to fetch registrations");
+      }
 
-  const handleDelete = (id) => {
-    const updatedData = registrations.filter(
-      (item) => item.id !== id
-    );
+      const data = await response.json();
 
-    setRegistrations(updatedData);
-
-    localStorage.setItem(
-      "registrations",
-      JSON.stringify(updatedData)
-    );
+      setRegistrations(data);
+    } catch (error) {
+      console.error("Error fetching registrations:", error);
+    }
   };
 
+  fetchRegistrations();
+}, []);
+
+const handleDelete = async (id) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/users/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to delete user");
+    }
+
+    setRegistrations(
+      registrations.filter((item) => item._id !== id)
+    );
+  } catch (error) {
+    console.error("Delete error:", error);
+  }
+};
   const handleEdit = (item) => {
     setEditingData({ ...item });
   };
@@ -39,20 +59,43 @@ function RegistrationTable() {
     });
   };
 
-  const handleSave = () => {
-    const updatedData = registrations.map((item) =>
-      item.id === editingData.id ? editingData : item
+  const handleSave = async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/users/${editingData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: editingData.name,
+          email: editingData.email,
+          phone: editingData.phone,
+          course: editingData.course,
+        }),
+      }
     );
 
-    setRegistrations(updatedData);
+    if (!response.ok) {
+      throw new Error("Failed to update user");
+    }
 
-    localStorage.setItem(
-      "registrations",
-      JSON.stringify(updatedData)
+    const updatedUser = await response.json();
+
+    setRegistrations(
+      registrations.map((item) =>
+        item._id === editingData._id
+          ? updatedUser.user || updatedUser
+          : item
+      )
     );
 
     setEditingData(null);
-  };
+  } catch (error) {
+    console.error("Update error:", error);
+  }
+};
 
   return (
     <div className="min-h-screen bg-slate-950 p-5 md:p-10">
