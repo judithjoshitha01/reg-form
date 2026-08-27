@@ -96,7 +96,7 @@ function RegistrationTable() {
 
           <button
             onClick={() => navigate("/register")}
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 font-semibold flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 font-semibold flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 hover:-translate-y-0.5 transition"
           >
             <UserPlus size={18} />
             New Registration
